@@ -1,0 +1,39 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (item) { %>
+    <form class="add-item-form" action="" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="purchase_order" id="purchase-order" placeholder="Purchase Order" value="<%= item.purchase_order %>" required>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="Brand" value="<%= item.manufacturer %>" required>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="model" id="model" placeholder="Model" value="<%= item.model %>" required>
+        </div>
+        
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="serial" id="serial" placeholder="Serial" value="<%= item.serial %>" required>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="number" class="form-control" name="asset_tag" id="asset_tag" placeholder="Asset" value="<%= item.asset %>" required>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="number" class="form-control" name="campus" id="campus" placeholder="Campus" value="<%= item.campus %>" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary float-right">Add Item</button>
+</form>
+    <% } else { %>
+        <p class="text-center">Item Not Found. Go <a href="/add">here</a> to add items.</p>
+    <% } %>
+</div>
+</div>
+<% include partials/footer.ejs %>

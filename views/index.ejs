@@ -1,0 +1,88 @@
+<!--Header Here-->
+<% include partials/header.ejs %>
+
+<!--Sorting Form Here-->
+<form class="sort-item-form" action="" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="purchase_order" id="purchase-order" placeholder="*" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder="*" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="model" id="model" placeholder="*" required>
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="serial" id="serial" placeholder="*" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="number" class="form-control" name="asset_tag" id="asset_tag" placeholder="*" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="number" class="form-control" name="campus" id="campus" placeholder="*" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Sort</button>
+        </form>
+
+<!--SQL Results Here-->
+<% if (inventory.length > 0) {%>
+<table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Purchase Order</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Serial</th>
+                <th scope="col">Asset</th>
+                <th scope="col">Campus</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead> 
+        <tbody>
+        <% inventory.forEach((inventory, index) => { %>
+            <tr>
+                <th scope="row"><%= inventory.id %></th>
+                <td><%= inventory.purchase_order %></td>
+                <td><%= inventory.manufacturer %></td>
+                <td><%= inventory.model %></td>
+                <td><%= inventory.serial %></td>
+                <td><%= inventory.asset %></td>
+                <td><%= inventory.campus %></td>
+                <td>
+                    <a href="/edit/<%= inventory.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                    <a href="/delete/<%= inventory.id %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+    <% }else{ %>
+    <!--0 Results here-->
+    <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Number</th>
+                <th scope="col">Username</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="8">Sum: No Items!</td>
+            </tr>
+        </tbody>
+    </table>
+<% } %>
+<!--Sorting Form Here-->
+<% include partials/footer.ejs %>

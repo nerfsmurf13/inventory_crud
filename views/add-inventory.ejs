@@ -1,0 +1,45 @@
+<!--Header Here-->
+<% include partials/header.ejs %>
+
+<div class="container">
+    <% if (message != '') { %>
+    <p class="text-center text-danger">
+        <%= message %>
+    </p>
+    <% } %>
+    <form class="add-item-form" action="" method="post" enctype="application/x-www-form-urlencoded">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+            <label for="purchase-order">Purchase Order</label>
+                <input type="text" class="form-control" name="purchase_order" id="purchase-order" placeholder=""
+                    required>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="manufacturer">Brand</label>
+                <input type="text" class="form-control" name="manufacturer" id="manufacturer" placeholder=""
+                    required>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="model">Model</label>
+                <input type="text" class="form-control" name="model" id="model" placeholder="" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+            <label for="serial">Serial</label>
+                <input type="text" class="form-control" name="serial" id="serial" placeholder="" required>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="asset_tag">Asset</label>
+                <input type="number" class="form-control" name="asset_tag" id="asset_tag" placeholder="" required>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="campus">Campus</label>
+                <input type="number" class="form-control" name="campus" id="campus" placeholder="" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Add Item</button>
+    </form>
+</div>
+</div>
+<% include partials/footer.ejs %>
